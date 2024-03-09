@@ -1,14 +1,8 @@
-import {
-  Card,
-  CardBody,
-  Box,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+// "use client"
+import { Card, CardBody, Box, Text, useDisclosure} from "@chakra-ui/react";
 import { useState } from "react";
-import { fetchDefault } from "../../../data/api/axiosConfig";
+// import { fetchDefault } from "../../../data/api/axiosConfig";
 import { ModalViewContent } from "./ModalCard";
-import { CharacterData } from '../../../data/hooks/ContextData'
 import { CardDetails } from "./CardDetails";
 import Image from "next/image";
 
@@ -22,27 +16,26 @@ interface cardProps {
 }
 
 export function CardView(props: cardProps) {
-  const [selectedCharacterData, setSelectedCharacterData] =
-    useState<CharacterData | null>(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
-  async function handleEventCard(id: number) {
-    async function fetchDetailsCharacter() {
-      try {
-        const response = await fetchDefault.get(`/character/${id}`);
-        const data = await response.data;
-        setSelectedCharacterData(data);
-      } catch (error) {
-        console.error("Erro na requisição", error);
-      }
-    }
-    fetchDetailsCharacter();
-    onOpen();
-  }
+  // async function handleEventCard(id: number) {
+  //   async function fetchDetailsCharacter() {
+  //     try {
+  //       const response = await fetchDefault.get(`/character/${id}`);
+  //       const data = await response.data;
+  //       setSelectedCharacterData(data);
+  //     } catch (error) {
+  //       console.error("Erro na requisição", error);
+  //     }
+  //   }
+  //   fetchDetailsCharacter();
+  //   onOpen();
+  // }
 
   return (
     <>
-      {selectedCharacterData !== null ? (
+    card
+      {/* {selectedCharacterData !== null ? (
         <ModalViewContent
           isOpen={isOpen}
           onClose={onClose}
@@ -61,7 +54,7 @@ export function CardView(props: cardProps) {
         borderRadius="3xl"
         border="1px solid transparent"
         className="font-montserrat hover:transition-all duration-75 animaLeft"
-        onClick={() => handleEventCard(props.id)}
+        // onClick={() => handleEventCard(props.id)}
         _hover={{ border: "3px solid #00b5cc" }}
       >
         <Image src={props.avatar} alt="avatar" width={105} height={105} className="rounded-full" />
@@ -84,7 +77,8 @@ export function CardView(props: cardProps) {
             />
           </Box>
         </CardBody>
-      </Card>
+      </Card> */}
+      teste
     </>
   );
 }

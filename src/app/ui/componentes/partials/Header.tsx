@@ -1,16 +1,16 @@
 import { Search } from "lucide-react";
-import { useContextData } from "../../../data/hooks/useContextData";
+// import { useContextData } from "../../../data/hooks/useContextData";
 import { ChangeEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export function Header() {
-  const { setSearchInputQuery } = useContextData();
+  // const { setSearchInputQuery } = useContextData();
 
-  function getSearchParams(event: ChangeEvent<HTMLInputElement>) {
-    const { value } = event.currentTarget;
-    setSearchInputQuery(value);
-  }
+  // function getSearchParams(event: ChangeEvent<HTMLInputElement>) {
+  //   const { value } = event.currentTarget;
+  //   setSearchInputQuery(value);
+  // }
 
   return (
     <header className="w-full max-w-full z-10 top-0 bg-sky-100 py-2 border shadow-md flex fixed opacity-95">
@@ -25,7 +25,7 @@ export function Header() {
             id="search"
             placeholder="Search name"
             className="p-2.5 w-full bg-white rounded-full border-2 border-sky-100 focus:outline-rmGreen relative h-full"
-            onChange={getSearchParams}
+            // onChange={getSearchParams}
           />
           <Search
             className="absolute right-5 top-2.5 text-rmGreen opacity-80"
