@@ -1,12 +1,13 @@
 import { ChakraProvider, Box } from "@chakra-ui/react";
-import { CardView } from "./ui/componentes/partials/CardView";
+import { CardView } from "./ui/componentes/partials/Cards/CardView";
 import { Loading } from "./ui/componentes/Loading";
 import { ButtonLoad } from "./ui/componentes/ButtonLoad";
 import { Header } from "./ui/componentes/partials/Header";
 import { fetchCharacterDataByPage } from "./data/api/axiosConfig";
 
-export default async  function Home() {
+export default async function Home() {
   const { results: dataCharactersForPage } = await fetchCharacterDataByPage(1);
+  // console.log(dataCharactersForPage);
 
   return (
     <ChakraProvider>

@@ -3,6 +3,11 @@
 @import 'tailwindcss/utilities';
 
 
+::-webkit-scrollbar{
+  width: 0;
+}
+
+
 .containerMain{
   display: flex;
   align-items: center;
