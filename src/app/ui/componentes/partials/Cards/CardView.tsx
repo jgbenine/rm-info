@@ -50,7 +50,7 @@ export function CardView({
         border="1px solid transparent"
         className="font-montserrat hover:transition-all duration-75 animaLeft"
         onClick={() => getDetails(id)}
-        _hover={{ border: "3px solid #00b5cc" }}
+        _hover={{ border: "1px solid #00b5cc" }}
       >
         <Image
           src={avatar}

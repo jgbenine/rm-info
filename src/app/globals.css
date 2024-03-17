@@ -4,9 +4,17 @@
 
 
 ::-webkit-scrollbar{
-  width: 0;
+  background:#9AF1F9;
+  width: .3125rem;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #0BC5EA; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9F7AEA; 
+}
 
 .containerMain{
   display: flex;
