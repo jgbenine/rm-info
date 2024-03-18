@@ -3,6 +3,19 @@
 @import 'tailwindcss/utilities';
 
 
+::-webkit-scrollbar{
+  background:#9AF1F9;
+  width: .3125rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0BC5EA; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9F7AEA; 
+}
+
 .containerMain{
   display: flex;
   align-items: center;

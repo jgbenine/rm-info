@@ -20,15 +20,26 @@ export async function fetchCharacterDataByPage(
   }
 }
 
+export async function fetchDetailCharacter(id: number): Promise<any> {
+  const endpoint = `character/${id}`;
+  try {
+    const response = await fetchDefault(endpoint);
+    return response.data;
+  } catch (error) {
+    console.error("Request error", error);
+    throw new Error("Failed to fetch character data");
+  }
+}
+
 export async function fetchCharacterDataBySearch(
   currentPage: number,
   searchInputQuery: string
 ): Promise<any> {
   const endpoint = `character/?page=${currentPage}&name=${searchInputQuery}`;
-
+  console.log(endpoint)
   try {
     const response = await fetchDefault(endpoint);
-    return response.data.results;
+    return response.data;
   } catch (error) {
     console.error("Request error", error);
     throw new Error("Failed to fetch character data");

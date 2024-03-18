@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, Creepster, Montserrat } from "next/font/google";
-// import { ContextData } from "./data/hooks/ContextData";
-import "./globals.css";
 import QueryProviderData from "./data/Provider/Provider";
+import "./globals.css";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -34,12 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <QueryProviderData>
-      <html
-        lang="en"
-        className={`${creepster.variable} ${syne.variable} ${montserrat.variable}`}
-      >
-        <body className="bg-sky-50">{children}</body>
-      </html>
+        <html
+          lang="en"
+          className={`${creepster.variable} ${syne.variable} ${montserrat.variable}`}
+        >
+          <body className="bg-sky-50">{children}</body>
+        </html>
     </QueryProviderData>
   );
 }

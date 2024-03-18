@@ -7,7 +7,7 @@ interface TextView{
   colorBadge: string;
 }
 
-export function ModalDetails(props: TextView) {
+export function DetailsInfo(props: TextView) {
   return (
     <Text
     display="flex"

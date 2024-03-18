@@ -9,19 +9,25 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
-import { CharacterData } from "../../../data/hooks/ContextData";
-import { ModalDetails } from "./ModalDetails";
+import { DetailsInfo } from "./DetailsInfo";
+import { fetchDetailCharacter } from "@/app/data/api/axiosConfig";
+import { useQuery } from "react-query";
 
 interface ModalViewContentProps {
   isOpen: boolean;
   onClose: () => void;
-  characterData: CharacterData;
+  id: number;
 }
 
-export function ModalViewContent(propsModal: ModalViewContentProps) {
+export function DetailsView(propsModal: ModalViewContentProps) {
+  const { data, isLoading } = useQuery(
+    ['detailCharacter', propsModal.id], // Chave de consulta dinâmica com o ID do personagem
+    () => fetchDetailCharacter(propsModal.id)
+  );
+
   return (
     <>
-      {propsModal.characterData !== null ? (
+      {!isLoading && (
         <Modal
           isOpen={propsModal.isOpen}
           onClose={propsModal.onClose}
@@ -43,11 +49,17 @@ export function ModalViewContent(propsModal: ModalViewContentProps) {
             <ModalBody>
               <Box display="flex" flexDirection="column" gap="20px" p="10px">
                 <div className="flex flex-col gap-2">
-                  <Text display="flex" gap="5px" alignItems="center" textTransform="uppercase" fontWeight="500" >
-                    {propsModal.characterData.name}
+                  <Text
+                    display="flex"
+                    gap="5px"
+                    alignItems="center"
+                    textTransform="uppercase"
+                    fontWeight="500"
+                  >
+                    {data?.name}
                   </Text>
                   <Image
-                    src={propsModal.characterData.image}
+                    src={data?.image}
                     boxSize="200px"
                     boxShadow="lg"
                     borderRadius={"2xl"}
@@ -56,36 +68,36 @@ export function ModalViewContent(propsModal: ModalViewContentProps) {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <ModalDetails
+                  <DetailsInfo
                     labelBadge="Specie"
-                    infoText={propsModal.characterData.species}
+                    infoText={data?.species}
                     colorBadge="purple"
                   />
-                  <ModalDetails
+                  <DetailsInfo
                     labelBadge="Gender"
-                    infoText={propsModal.characterData.gender}
+                    infoText={data?.gender}
                     colorBadge="green"
                   />
-                  <ModalDetails
+                  <DetailsInfo
                     labelBadge="Location"
-                    infoText={propsModal.characterData?.location?.name}
+                    infoText={data?.location?.name}
                     colorBadge="purple"
                   />
-                  <ModalDetails
+                  <DetailsInfo
                     labelBadge="Origin"
-                    infoText={propsModal.characterData?.origin?.name}
+                    infoText={data?.origin?.name}
                     colorBadge="green"
                   />
-                  {propsModal.characterData.type ? (
-                    <ModalDetails
+                  {data.type ? (
+                    <DetailsInfo
                       labelBadge="Type"
-                      infoText={propsModal.characterData?.type}
+                      infoText={data?.type}
                       colorBadge="purple"
                     />
                   ) : null}
-                  <ModalDetails
+                  <DetailsInfo
                     labelBadge="Status"
-                    infoText={propsModal.characterData.status}
+                    infoText={data?.status}
                     colorBadge="yellow"
                   />
                 </div>
@@ -94,8 +106,6 @@ export function ModalViewContent(propsModal: ModalViewContentProps) {
             <ModalFooter></ModalFooter>
           </ModalContent>
         </Modal>
-      ) : (
-        <p>não encontrado dados do modal</p>
       )}
     </>
   );
