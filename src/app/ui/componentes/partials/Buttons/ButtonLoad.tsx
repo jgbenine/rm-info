@@ -34,15 +34,15 @@ export function ButtonLoad({
       isDisabled={isLoadingMore}
       role="button"
     >
-      <p className="text-white text-sm">
+      <p className="text-white uppercase text-xs tracking-widest">
         {isLoadingMore ? (
           <span className="flex items-center gap-1">
-            Loading <Loader2 height={18} className="animate-spin" />
+           <Loader2 height={18} className="animate-spin" />
           </span>
         ) : (
           <>
-            <span className="flex items-center gap-1">
-               Scroll <ChevronsDown height={18} data-testid="iconBtn" className="animate-bounce transform -translate-x-0.5" />
+            <span className="flex items-center gap-1 ">
+               Scroll <ChevronsDown height={18} data-testid="iconBtn" className="animate-bounce transform -translate-x-4" />
             </span>
           </>
         )}

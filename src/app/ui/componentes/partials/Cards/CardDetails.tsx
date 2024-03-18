@@ -7,7 +7,7 @@ interface DetailsCardProps {
 
 export function CardDetails(props: DetailsCardProps) {
   return (
-    <div className="flex gap-2 items-center max-w-[170px]">
+    <div className="flex gap-2 items-center max-w-full">
       <Badge fontSize={11} colorScheme="cyan">
         {props.labelInfo}
       </Badge>
